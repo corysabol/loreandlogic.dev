@@ -1,0 +1,425 @@
+// Variables
+$colors: (
+  'light': (
+    // Core Background and Text Colors
+    'bg-primary': #ffffff,      // White background
+    'bg-secondary': #f4f4f4,    // Gray 10
+    'text-primary': #161616,    // Gray 100
+    'text-secondary': #525252,  // Gray 70
+    
+    // Accent Colors
+    'accent-primary': #0f62fe,  // Blue 60
+    'accent-secondary': #8a3ffc, // Purple 60
+    
+    // UI Elements
+    'code-bg': #f2f4f8,        // Gray 10
+    'border-color': #e0e0e0,   // Gray 20
+    
+    // Additional Oxocarbon Colors
+    'subtle-text': #6f6f6f,    // Gray 60
+    'link': #0043ce,           // Blue 70
+    'link-hover': #0f62fe,     // Blue 60
+    'success': #198038,        // Green 60
+    'warning': #f1c21b,        // Yellow 30
+    'error': #da1e28           // Red 60
+  ),
+  'dark': (
+    // Core Background and Text Colors
+    'bg-primary': #161616,      // Gray 100
+    'bg-secondary': #262626,    // Gray 90
+    'text-primary': #f4f4f4,    // Gray 10
+    'text-secondary': #c6c6c6,  // Gray 30
+    
+    // Accent Colors
+    'accent-primary': #78a9ff,  // Blue 40
+    'accent-secondary': #be95ff, // Purple 40
+    
+    // UI Elements
+    'code-bg': #363636,        // Gray 80
+    'border-color': #525252,   // Gray 70
+    
+    // Additional Oxocarbon Colors
+    'subtle-text': #a8a8a8,    // Gray 40
+    'link': #78a9ff,           // Blue 40
+    'link-hover': #a6c8ff,     // Blue 30
+    'success': #42be65,        // Green 40
+    'warning': #fddc69,        // Yellow 30
+    'error': #ff8389          // Red 40
+  )
+);
+
+$spacing: (
+  'xs': 0.25rem,
+  'sm': 0.5rem,
+  'md': 1rem,
+  'lg': 2rem,
+  'xl': 4rem
+);
+
+$fonts: (
+  'sans': ('Inter', -apple-system, BlinkMacSystemFont, sans-serif),
+  'mono': ('JetBrains Mono', 'Consolas', monospace)
+);
+
+$content-width: 42rem;
+
+// Theme Settings
+:root {
+  @each $color-name, $color-value in map-get($colors, 'light') {
+    --#{$color-name}: #{$color-value};
+  }
+}
+
+// Dark theme
+[data-theme="dark"] {
+  @each $color-name, $color-value in map-get($colors, 'dark') {
+    --#{$color-name}: #{$color-value};
+  }
+}
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Base styles
+body {
+  font-family: map-get($fonts, 'sans');
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+// Layout
+.container {
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: 0 map-get($spacing, 'md');
+  width: 100%;
+}
+
+// Header
+.site-header {
+  padding: map-get($spacing, 'lg') 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: map-get($spacing, 'xl');
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+  }
+}
+
+// Navigation
+.nav {
+  display: flex;
+  align-items: center;
+  gap: map-get($spacing, 'lg');
+  
+  a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: var(--accent-primary);
+    }
+  }
+}
+
+// Theme toggle
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  margin-left: map-get($spacing, 'lg');
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--accent-primary);
+  }
+  
+  svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .sun-icon {
+    display: none;
+  }
+
+  .moon-icon {
+    display: block;
+  }
+}
+
+[data-theme="dark"] .theme-toggle {
+  .sun-icon {
+    display: block;
+  }
+
+  .moon-icon {
+    display: none;
+  }
+}
+
+// Main content
+main {
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: 0 map-get($spacing, 'md');
+}
+
+// Posts
+.posts-list {
+  margin: map-get($spacing, 'xl') 0;
+}
+
+.post-preview {
+  margin-bottom: map-get($spacing, 'xl');
+}
+
+.post, .post-preview {
+  max-width: 100%;
+  margin: 0 auto map-get($spacing, 'xl');
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: map-get($spacing, 'lg');
+    color: var(--text-primary);
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: map-get($spacing, 'lg') 0 map-get($spacing, 'md');
+    color: var(--text-primary);
+  }
+  
+  p {
+    line-height: 1.8;
+    margin-bottom: map-get($spacing, 'md');
+    color: var(--text-secondary);
+  }
+}
+
+// Code blocks
+pre {
+  background: var(--code-bg);
+  padding: map-get($spacing, 'md');
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: map-get($fonts, 'mono');
+  font-size: 0.875rem;
+  margin: map-get($spacing, 'md') 0;
+}
+
+code {
+  font-family: map-get($fonts, 'mono');
+  font-size: 0.875em;
+  padding: 0.2em 0.2em;
+  border-radius: 3px;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+// Footer
+.site-footer {
+  margin-top: map-get($spacing, 'xl');
+  padding: map-get($spacing, 'lg') 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  
+  .container {
+    text-align: center;
+  }
+}
+
+// Utility classes
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .container {
+    padding: 0 map-get($spacing, 'md');
+  }
+  
+  .site-header {
+    .container {
+      flex-direction: column;
+      gap: map-get($spacing, 'md');
+      text-align: center;
+    }
+  }
+  
+  .nav {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .theme-toggle {
+    margin-left: 0;
+  }
+
+  .post, .post-preview {
+    h1 {
+      font-size: 1.75rem;
+    }
+    
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// General spacing for markdown elements
+p, h1, h2, h3, h4, h5, h6, ul, ol {
+  margin-bottom: 1.5rem;
+}
+
+// Styling for unordered lists
+ul {
+  list-style-type: none;
+  padding-left: 1.5rem;
+
+  li {
+    position: relative;
+    margin-bottom: 0.5rem;
+
+    &::before {
+      content: "•";
+      color: #4a4a4a;
+      font-weight: bold;
+      position: absolute;
+      left: -1rem;
+    }
+
+    &:hover {
+      color: #007bff;
+      transition: color 0.3s ease;
+    }
+  }
+}
+
+// Styling for ordered lists
+ol {
+  padding-left: 1.5rem;
+  counter-reset: item;
+
+  li {
+    position: relative;
+    margin-bottom: 0.5rem;
+    counter-increment: item;
+
+    &::before {
+      content: counter(item) ".";
+      color: #4a4a4a;
+      font-weight: bold;
+      position: absolute;
+      left: -1.5rem;
+    }
+
+    &:hover {
+      color: #007bff;
+      transition: color 0.3s ease;
+    }
+  }
+}
+
+// Add some extra spacing for nested lists
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+// Styling for links
+a {
+  color: #0f62fe; // Oxocarbon blue for unvisited links
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #002d9c; // Darker blue on hover
+  }
+
+  &:visited {
+    color: #1192e8; // Oxocarbon teal for visited links
+  }
+}
+
+// Task Lists (GitHub-style checkboxes)
+.task-list {
+  list-style: none;
+  padding-left: map-get($spacing, 'lg');
+  
+  li {
+    position: relative;
+    margin-bottom: map-get($spacing, 'sm');
+    padding-left: map-get($spacing, 'md');
+
+    &::before {
+      content: "□";
+      position: absolute;
+      left: -1.5rem;
+      color: var(--text-secondary);
+      font-family: map-get($fonts, 'mono');
+    }
+
+    &.completed {
+      color: var(--text-secondary);
+      text-decoration: line-through;
+      
+      &::before {
+        content: "✓";
+        color: var(--success);
+      }
+    }
+  }
+}
+
+// Definition Lists
+dl {
+  margin: map-get($spacing, 'md') 0;
+  
+  dt {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: map-get($spacing, 'xs');
+  }
+  
+  dd {
+    color: var(--text-secondary);
+    margin-bottom: map-get($spacing, 'md');
+    padding-left: map-get($spacing, 'md');
+    border-left: 2px solid var(--border-color);
+  }
+}

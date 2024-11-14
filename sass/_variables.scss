@@ -1,0 +1,63 @@
+$colors: (
+  'light': (
+    // Core Background and Text Colors
+    'bg-primary': #ffffff,      // White background
+    'bg-secondary': #f4f4f4,    // Gray 10
+    'text-primary': #161616,    // Gray 100
+    'text-secondary': #525252,  // Gray 70
+    
+    // Accent Colors
+    'accent-primary': #0f62fe,  // Blue 60
+    'accent-secondary': #8a3ffc, // Purple 60
+    
+    // UI Elements
+    'code-bg': #f2f4f8,        // Gray 10
+    'border-color': #e0e0e0,   // Gray 20
+    
+    // Additional Oxocarbon Colors for flexibility
+    'subtle-text': #6f6f6f,    // Gray 60
+    'link': #0043ce,           // Blue 70
+    'link-hover': #0f62fe,     // Blue 60
+    'success': #198038,        // Green 60
+    'warning': #f1c21b,        // Yellow 30
+    'error': #da1e28           // Red 60
+  ),
+  'dark': (
+    // Core Background and Text Colors
+    'bg-primary': #161616,      // Gray 100
+    'bg-secondary': #262626,    // Gray 90
+    'text-primary': #f4f4f4,    // Gray 10
+    'text-secondary': #c6c6c6,  // Gray 30
+    
+    // Accent Colors
+    'accent-primary': #78a9ff,  // Blue 40
+    'accent-secondary': #be95ff, // Purple 40
+    
+    // UI Elements
+    'code-bg': #363636,        // Gray 80
+    'border-color': #525252,   // Gray 70
+    
+    // Additional Oxocarbon Colors for flexibility
+    'subtle-text': #a8a8a8,    // Gray 40
+    'link': #78a9ff,           // Blue 40
+    'link-hover': #a6c8ff,     // Blue 30
+    'success': #42be65,        // Green 40
+    'warning': #fddc69,        // Yellow 30
+    'error': #ff8389          // Red 40
+  )
+);
+
+$spacing: (
+  'xs': 0.25rem,
+  'sm': 0.5rem,
+  'md': 1rem,
+  'lg': 2rem,
+  'xl': 4rem
+);
+
+$fonts: (
+  'sans': ('Inter', -apple-system, BlinkMacSystemFont, sans-serif),
+  'mono': ('JetBrains Mono', 'Consolas', monospace)
+);
+
+$content-width: 42rem;
