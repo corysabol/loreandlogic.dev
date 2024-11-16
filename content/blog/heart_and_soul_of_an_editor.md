@@ -17,3 +17,25 @@ So, I set out upon a journey to see what made some of my favorite text editors p
 # Hang on Baby
 
 Enter Ropes. The most common data structure employed be many text editors. Ropes are
+
+**Explanation of rope data structure**
+
+Rope example
+
+```rs
+fn foo(s: &str) -> String {
+  s.to_string()
+}
+```
+
+## Benchmarks
+
+## Comparison with Gap Buffer
+
+## Why Ropes instead of Gap Buffer
+
+- Ease of use
+- Common
+- Developer velocity
+
+# Lore Core
